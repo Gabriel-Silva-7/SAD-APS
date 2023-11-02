@@ -1,12 +1,15 @@
-import SidebarMenu from "./modules/Menu";
 import AppRoutes from "./routes";
-import * as S from "./styles/index";
+import * as S from "./layout/styles/index";
+import SideBarMenu from "./layout/SideBar";
 
 function App() {
   return (
     <S.Container>
-      <SidebarMenu />
-      <AppRoutes />
+      <SideBarMenu />
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <div>header</div>
+        <AppRoutes />
+      </div>
     </S.Container>
   );
 }
