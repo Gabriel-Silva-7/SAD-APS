@@ -9,7 +9,11 @@ const SideBarMenu = () => {
   const { collapsedMenu, setCollapsedMenu } = useMenu();
 
   return (
-    <div style={{ background: "#001529" }}>
+    <div
+      style={{
+        background: "#001529",
+      }}
+    >
       <S.StyledSider
         collapsed={collapsedMenu}
         trigger={null}

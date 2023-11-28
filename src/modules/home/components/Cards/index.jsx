@@ -13,22 +13,38 @@ export default function AppWidgetSummary({
   icon,
   color = "primary",
   sx,
+  colorIcon,
   ...other
 }) {
   return (
     <Card
       component={Stack}
-      spacing={2}
       direction="row"
       sx={{
-        px: 2,
-        py: 3,
+        px: 3,
+        py: 5,
         borderRadius: 2,
         ...sx,
+        minWidth: 200,
       }}
       {...other}
     >
-      {icon && <Box sx={{ width: 64, height: 64 }}>{icon}</Box>}
+      {icon && (
+        <Box
+          sx={{
+            width: 64,
+            height: 64,
+            background: colorIcon,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: 30,
+            mr: 3,
+          }}
+        >
+          {icon}
+        </Box>
+      )}
 
       <Stack spacing={0.5}>
         <Typography variant="h4">{fShortenNumber(total)}</Typography>

@@ -3,7 +3,9 @@ import React, { createContext, useState, useContext } from "react";
 const MenuContext = createContext();
 
 export function MenuProvider({ children }) {
-  const [collapsedMenu, setCollapsedMenu] = useState(false);
+  const [collapsedMenu, setCollapsedMenu] = useState(
+    screen.width > 400 ? false : true
+  );
 
   return (
     <MenuContext.Provider value={{ collapsedMenu, setCollapsedMenu }}>
