@@ -25,10 +25,10 @@ const Dashboard = () => {
       </div>
       <S.GridContainer>
         <S.CardGrid>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          <Card title="Novos Usuarios" date="Semanal" />
+          <Card title="Activity" date="yearly" />
+          <Card title="Real-Time" />
+          <Card title="Bounce" date="annual" />
         </S.CardGrid>
         <S.ChartContainer>
           <BarCharts />

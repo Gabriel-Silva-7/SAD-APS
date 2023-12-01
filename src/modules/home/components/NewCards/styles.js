@@ -7,4 +7,5 @@ export const ContainerCard = styled.div`
   flex-direction: column;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   border-radius: 12px;
+  min-height: 150px;
 `;
