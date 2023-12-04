@@ -10,7 +10,6 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     setAuthenticated(!!token);
-    console.log(!!token);
     token && verifyToken(token);
   }, [token]);
 

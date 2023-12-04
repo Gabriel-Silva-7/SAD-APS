@@ -34,11 +34,10 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/register",
+        "https://aps-gastronomia-aps-gastronomia-back.azurewebsites.net/register",
         userData
       );
 
-      console.log("Resposta da API:", response);
       if (response.status === 200)
         setTimeout(() => {
           navigate("/login");
@@ -46,9 +45,7 @@ const Register = () => {
         }, 2000);
 
       setPasswordsMatch(true);
-    } catch (error) {
-      console.error("Erro ao enviar a requisição:", error);
-    }
+    } catch (error) {}
   };
 
   return (

@@ -5,11 +5,12 @@ import Header from "./layout/header";
 import { MenuProvider } from "./context/MenuContext";
 import { useEffect, useState } from "react";
 import "./index.css";
+import { useAuth } from "./context/AuthContext";
 
-function App() {
+function App({ token }) {
   return (
     <MenuProvider>
-      <AppRoutes />
+      <AppRoutes authenticated={!!token} />
     </MenuProvider>
   );
 }

@@ -1,33 +1,24 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { usuarios } from "./data";
 import UsersTable from "./components/usersTable";
+import axios from "axios";
 
 const UserManager = () => {
-  return (
-    <div>
-      UserManager
-      {/* <table>
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Cidade</th>
-          </tr>
-        </thead>
-        {usuarios.usuarios.map((user) => (
-          <tbody>
-            <tr>
-              <td>{user.nome}</td>
-              <td>{user.cidade}</td>
-            </tr>
-          </tbody>
-        ))}
-      </table> */}
-      {/* <UsersTable /> */}
-      {usuarios.usuarios.map((user) => {
-        return <div>{user.nome}</div>;
-      })}
-    </div>
-  );
+  const [data, setData] = useState();
+
+  const getUsers = async () => {
+    const response = await axios.get(
+      "https://aps-gastronomia-aps-gastronomia-back.azurewebsites.net/getusers"
+    );
+    setData(response.data);
+    console.log(response.data);
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  return <div></div>;
 };
 
 export default UserManager;

@@ -11,8 +11,8 @@ import * as S from "../layout/styles/";
 import SideBarMenu from "../layout/SideBar";
 import Header from "../layout/header";
 
-const PrivateRoutes = () => {
-  const { authenticated } = useAuth();
+const PrivateRoutes = ({ authenticated }) => {
+  console.log(authenticated);
 
   const Container = ({ component: Component }) => {
     return (
@@ -58,7 +58,7 @@ const PrivateRoutes = () => {
         />
         <Route
           path="/gerenciadordeusuario"
-          element={<Container component={() => <>gerenciadordeusuario</>} />}
+          element={<Container component={UserManager} />}
         />
       </Routes>
     );
@@ -69,6 +69,7 @@ const PrivateRoutes = () => {
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/*" element={<Navigate to="/login" />} />
       </Routes>
     );
   }
