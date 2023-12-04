@@ -9,7 +9,6 @@ import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 
-import { account } from "../../../../_mock/account";
 import { useAuth } from "../../../../context/AuthContext";
 
 // ----------------------------------------------------------------------
@@ -33,7 +32,6 @@ export default function AccountPopover() {
   };
 
   const { logout, userData } = useAuth();
-  console.log(userData);
 
   return (
     <>
@@ -50,7 +48,7 @@ export default function AccountPopover() {
         }}
       >
         <Avatar
-          src={account.photoURL}
+          src={userData.photoURL}
           alt={userData.nome}
           sx={{
             width: 36,
@@ -78,10 +76,8 @@ export default function AccountPopover() {
         }}
       >
         <Box sx={{ my: 1.5, px: 2 }}>
-          <Typography variant="subtitle2" noWrap>
-            {userData.nome}
-          </Typography>
-          <Typography variant="body2" sx={{ color: "text.secondary" }} noWrap>
+          <Typography noWrap>{userData.nome}</Typography>
+          <Typography sx={{ color: "text.secondary" }} noWrap>
             {userData.email}
           </Typography>
         </Box>

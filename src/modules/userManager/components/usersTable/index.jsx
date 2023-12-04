@@ -6,7 +6,6 @@ import { COLUMNS } from "../columns";
 const UsersTable = () => {
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => usersData, []);
-  console.log(data);
   const tableInstanse = ({
     getTableProps,
     getTableBodyProps,

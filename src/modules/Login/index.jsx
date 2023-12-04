@@ -33,14 +33,12 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/login",
+        "https://aps-gastronomia-aps-gastronomia-back.azurewebsites.net/login",
         userData,
         {
           "Content-Type": "application/json",
         }
       );
-
-      console.log("Resposta da API:", response);
 
       if (response.data.token) {
         localStorage.setItem("token", response.data.token);
@@ -52,7 +50,6 @@ const Login = () => {
         setError("Credenciais inválidas");
       }
     } catch (error) {
-      console.error("Erro ao enviar a requisição:", error);
       setError("Erro ao realizar login");
     }
   };
