@@ -1,19 +1,9 @@
 import { useState } from "react";
-import { Box, Divider, Grid, Paper, Typography } from "@mui/material";
-import AppWidgetSummary from "./components/Cards/";
-import {
-  Money,
-  Bank,
-  BagSimple,
-  Bug,
-  ShoppingCart,
-  Users,
-} from "@phosphor-icons/react";
-import Header from "./components/Header";
-import { styled } from "@mui/system";
-import * as S from "./styles";
+import { Divider } from "@mui/material";
 import PizzaChart from "./components/PizzaChart";
 import BarCharts from "./components/BarChart";
+import Header from "./components/Header";
+import * as S from "./styles";
 import Card from "./components/NewCards";
 
 const Dashboard = () => {

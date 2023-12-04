@@ -3,25 +3,13 @@ import * as S from "./layout/styles/index";
 import SideBarMenu from "./layout/SideBar";
 import Header from "./layout/header";
 import { MenuProvider } from "./context/MenuContext";
+import { useEffect, useState } from "react";
+import "./index.css";
 
 function App() {
   return (
     <MenuProvider>
-      <S.Container>
-        <SideBarMenu />
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            width: "100%",
-            height: "100%",
-            overflowX: "hidden",
-          }}
-        >
-          <Header />
-          <AppRoutes />
-        </div>
-      </S.Container>
+      <AppRoutes />
     </MenuProvider>
   );
 }

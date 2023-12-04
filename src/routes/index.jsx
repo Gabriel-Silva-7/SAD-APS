@@ -1,19 +1,77 @@
-import { Route, Routes } from "react-router-dom";
-import "../index.css";
+// PrivateRoutes.jsx
+
+import React from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Dashboard from "../modules/home";
 import UserManager from "../modules/userManager";
+import { useAuth } from "../context/AuthContext";
+import Login from "../modules/Login";
+import Register from "../modules/Register";
+import * as S from "../layout/styles/";
+import SideBarMenu from "../layout/SideBar";
+import Header from "../layout/header";
 
-const AppRoutes = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<Dashboard />} />
-      <Route path="/vendas" element={<>Vendas</>} />
-      <Route path="/desempenhopessoal" element={<> Desempenhopessoal </>} />
-      <Route path="/financeiro" element={<> financeiro </>} />
-      <Route path="/inventarioeestoque" element={<> inventarioeestoque </>} />
-      <Route path="/gerenciadordeusuario" element={<UserManager />} />
-    </Routes>
-  );
+const PrivateRoutes = () => {
+  const { authenticated } = useAuth();
+
+  const Container = ({ component: Component }) => {
+    return (
+      <S.Container>
+        <SideBarMenu />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            width: "100%",
+            height: "100%",
+            overflowX: "hidden",
+          }}
+        >
+          <Header />
+          {<Component />}
+        </div>
+      </S.Container>
+    );
+  };
+
+  if (authenticated)
+    return (
+      <Routes>
+        <Route path="/login" element={<Navigate to="/" />} />
+        <Route path="/register" element={<Navigate to="/" />} />
+        <Route path="/" element={<Container component={Dashboard} />} />
+        <Route
+          path="/vendas"
+          element={<Container component={() => <>vendas</>} />}
+        />
+        <Route
+          path="/desempenhopessoal"
+          element={<Container component={() => <>desempenhopessoal</>} />}
+        />
+        <Route
+          path="/financeiro"
+          element={<Container component={() => <>financeiro</>} />}
+        />
+        <Route
+          path="/inventarioeestoque"
+          element={<Container component={() => <>inventarioeestoque</>} />}
+        />
+        <Route
+          path="/gerenciadordeusuario"
+          element={<Container component={() => <>gerenciadordeusuario</>} />}
+        />
+      </Routes>
+    );
+
+  if (!authenticated) {
+    return (
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    );
+  }
 };
 
-export default AppRoutes;
+export default PrivateRoutes;

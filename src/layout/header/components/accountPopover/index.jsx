@@ -10,20 +10,13 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 
 import { account } from "../../../../_mock/account";
+import { useAuth } from "../../../../context/AuthContext";
 
 // ----------------------------------------------------------------------
 
 const MENU_OPTIONS = [
   {
-    label: "Home",
-    icon: "eva:home-fill",
-  },
-  {
-    label: "Profile",
-    icon: "eva:person-fill",
-  },
-  {
-    label: "Settings",
+    label: "Profile Settings",
     icon: "eva:settings-2-fill",
   },
 ];
@@ -38,6 +31,9 @@ export default function AccountPopover() {
   const handleClose = () => {
     setOpen(null);
   };
+
+  const { logout, userData } = useAuth();
+  console.log(userData);
 
   return (
     <>
@@ -55,14 +51,14 @@ export default function AccountPopover() {
       >
         <Avatar
           src={account.photoURL}
-          alt={account.displayName}
+          alt={userData.nome}
           sx={{
             width: 36,
             height: 36,
             border: (theme) => `solid 2px ${theme.palette.background.default}`,
           }}
         >
-          {account.displayName.charAt(0).toUpperCase()}
+          {userData.nome.charAt(0).toUpperCase()}
         </Avatar>
       </IconButton>
 
@@ -83,10 +79,10 @@ export default function AccountPopover() {
       >
         <Box sx={{ my: 1.5, px: 2 }}>
           <Typography variant="subtitle2" noWrap>
-            {account.displayName}
+            {userData.nome}
           </Typography>
           <Typography variant="body2" sx={{ color: "text.secondary" }} noWrap>
-            {account.email}
+            {userData.email}
           </Typography>
         </Box>
 
@@ -103,7 +99,7 @@ export default function AccountPopover() {
         <MenuItem
           disableRipple
           disableTouchRipple
-          onClick={handleClose}
+          onClick={logout}
           sx={{ typography: "body2", color: "error.main", py: 1.5 }}
         >
           Logout
