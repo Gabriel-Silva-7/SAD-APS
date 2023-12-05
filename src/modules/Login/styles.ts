@@ -73,3 +73,25 @@ export const ErrorMsg = styled.p`
   color: red;
   margin-bottom: 10px;
 `;
+
+export const LoadingWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Cor de fundo escuro com transparência */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ajuste o valor de z-index conforme necessário */
+`;
+
+export const Spinner = styled.div`
+  border: 4px solid rgba(255, 255, 255, 0.3); /* Cor da borda do spinner */
+  border-radius: 50%;
+  border-top: 4px solid #fff; /* Cor da parte superior do spinner */
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+`;

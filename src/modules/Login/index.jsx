@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
 import newLogo from "../../assets/newlogo.png";
+import { CircularProgress } from "@mui/material";
 
 const Login = () => {
   const [userData, setUserData] = useState({
@@ -12,6 +13,8 @@ const Login = () => {
   });
 
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const handleInputChange = (event) => {
@@ -24,6 +27,7 @@ const Login = () => {
   };
 
   const handleSubmit = async (event) => {
+    setLoading(true);
     event.preventDefault();
 
     if (!userData.email || !userData.password) {
@@ -48,9 +52,11 @@ const Login = () => {
         }, 1000);
       } else {
         setError("Credenciais inválidas");
+        setLoading(false);
       }
     } catch (error) {
       setError("Erro ao realizar login");
+      setLoading(false);
     }
   };
 
@@ -87,6 +93,11 @@ const Login = () => {
           <S.SubmitButton type="submit">Login</S.SubmitButton>
         </S.LoginForm>
       </S.LoginWrapper>
+      {loading && (
+        <S.LoadingWrapper>
+          <CircularProgress size={50} />
+        </S.LoadingWrapper>
+      )}
     </S.Container>
   );
 };
