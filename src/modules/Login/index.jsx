@@ -33,7 +33,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "https://aps-gastronomia-aps-gastronomia-back.azurewebsites.net/login",
+        "https://aps-api.onrender.com/login",
         userData,
         {
           "Content-Type": "application/json",
