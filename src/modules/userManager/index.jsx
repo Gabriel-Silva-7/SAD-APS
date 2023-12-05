@@ -7,7 +7,9 @@ const UserManager = () => {
   const [data, setData] = useState();
 
   const getUsers = async () => {
-    const response = await axios.get("https://aps-api.onrender.com/getusers");
+    const response = await axios.get(
+      "https://gastronom.azurewebsites.net/getusers"
+    );
     setData(response.data);
     console.log(response.data);
   };

@@ -34,7 +34,7 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        "https://aps-api.onrender.com/register",
+        "https://gastronom.azurewebsites.net/register",
         userData
       );
 
