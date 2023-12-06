@@ -37,8 +37,8 @@ const Dashboard = () => {
           <Card
             title="Novos Clientes"
             date="Semanal"
-            total={newClients[0]?.NovosClientes}
-            percent={newClients[0]?.PercentualAumento}
+            total={newClients && newClients[0]?.NovosClientes}
+            percent={newClients && newClients[0]?.PercentualAumento}
           />
           <Card title="Activity" date="yearly" />
           <Card title="Real-Time" />
