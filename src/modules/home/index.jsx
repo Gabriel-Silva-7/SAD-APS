@@ -16,13 +16,12 @@ const Dashboard = () => {
       days: -14,
     });
     setNewClients(response.data);
-    return response.data;
   };
 
   useEffect(() => {
     getNewClients();
   }, []);
-  console.log(newClients);
+  console.log(newClients[0].NovosClientes);
 
   return (
     <div style={{ padding: "20px", width: "98%" }}>
@@ -35,7 +34,12 @@ const Dashboard = () => {
       </div>
       <S.GridContainer>
         <S.CardGrid>
-          <Card title="Novos Clientes" date="Semanal" />
+          <Card
+            title="Novos Clientes"
+            date="Semanal"
+            total={newClients[0]?.NovosClientes}
+            percent={newClients[0]?.PercentualAumento}
+          />
           <Card title="Activity" date="yearly" />
           <Card title="Real-Time" />
           <Card title="Bounce" date="annual" />
