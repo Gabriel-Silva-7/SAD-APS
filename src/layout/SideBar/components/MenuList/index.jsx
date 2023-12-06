@@ -8,33 +8,33 @@ import {
 } from "@phosphor-icons/react";
 import React from "react";
 import * as S from "./styles";
+import { useNavigate } from "react-router";
 
 const MenuList = () => {
   const { Item, Divider } = Menu;
+  const nav = useNavigate();
   return (
     <S.StyledMenu theme="light" mode="inline">
       <Item key="Home" icon={<HouseSimple size={20} />}>
-        <a href="/">Dashboard</a>
+        <a onClick={() => nav("/")}>Dashboard</a>
       </Item>
       <Divider />
       <Item key="Vendas" icon={<ChartBarHorizontal size={20} />}>
-        <a href="/vendas">Vendas</a>
-      </Item>
-      <Divider />
-      <Item key="DesempenhoPessoal" icon={<ChartLineUp size={20} />}>
-        <a href="/desempenhoPessoal">Desempenho Pessoal </a>
+        <a onClick={() => nav("/vendas")}>Vendas</a>
       </Item>
       <Divider />
       <Item key="Financeiro" icon={<Money size={20} />}>
-        <a href="/financeiro">Financeiro</a>
+        <a onClick={() => nav("/financeiro")}>Financeiro</a>
       </Item>
       <Divider />
       <Item key="Inventario&Estoque" icon={<Archive size={20} />}>
-        <a href="/inventarioeestoque">Inventario e Estoque</a>
+        <a onClick={() => nav("/inventarioeestoque")}>Inventario e Estoque</a>
       </Item>
       <Divider />
       <Item key="GerneciadorDeUsuario" icon={<Archive size={20} />}>
-        <a href="/gerenciadordeusuario">Gerenciador de Usuário</a>
+        <a onClick={() => nav("/gerenciadordeusuario")}>
+          Gerenciador de Usuário
+        </a>
       </Item>
       <Divider />
     </S.StyledMenu>

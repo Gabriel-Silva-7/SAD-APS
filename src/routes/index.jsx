@@ -12,8 +12,6 @@ import SideBarMenu from "../layout/SideBar";
 import Header from "../layout/header";
 
 const PrivateRoutes = ({ authenticated }) => {
-  console.log(authenticated);
-
   const Container = ({ component: Component }) => {
     return (
       <S.Container>

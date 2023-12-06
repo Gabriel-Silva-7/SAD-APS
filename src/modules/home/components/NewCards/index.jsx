@@ -1,21 +1,20 @@
-import { CardContent } from "@mui/material";
 import React from "react";
 import * as S from "./styles";
 
 const Card = (props) => {
   return (
     <S.ContainerCard>
-      <div style={{ padding: 20 }}>
-        <div>
+      <S.ContainerWrapper>
+        <S.Header>
           <div>{props.title && props.title}</div>
-          <div>{props.date && props.date}</div>
-        </div>
-        <div>3.213,12</div>
-        <div>
-          <div>14% +</div>
-          <div>desde a ultima semana</div>
-        </div>
-      </div>
+          <S.Date>{props.date && props.date}</S.Date>
+        </S.Header>
+        <S.TotalClients>3.213,12</S.TotalClients>
+        <S.PercentContainer>
+          <S.Percents>+14%</S.Percents>
+          <S.LastUpdate>desde a ultima semana</S.LastUpdate>
+        </S.PercentContainer>
+      </S.ContainerWrapper>
     </S.ContainerCard>
   );
 };

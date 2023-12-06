@@ -10,6 +10,7 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 
 import { useAuth } from "../../../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 // ----------------------------------------------------------------------
 
@@ -22,6 +23,7 @@ const MENU_OPTIONS = [
 
 export default function AccountPopover() {
   const [open, setOpen] = useState(null);
+  const Nav = useNavigate();
 
   const handleOpen = (event) => {
     setOpen(event.currentTarget);
@@ -29,6 +31,10 @@ export default function AccountPopover() {
 
   const handleClose = () => {
     setOpen(null);
+  };
+
+  const handleProfileSettings = () => {
+    Nav("/gerenciadordeusuario");
   };
 
   const { logout, userData } = useAuth();
@@ -85,7 +91,7 @@ export default function AccountPopover() {
         <Divider sx={{ borderStyle: "dashed" }} />
 
         {MENU_OPTIONS.map((option) => (
-          <MenuItem key={option.label} onClick={handleClose}>
+          <MenuItem key={option.label} onClick={handleProfileSettings}>
             {option.label}
           </MenuItem>
         ))}
