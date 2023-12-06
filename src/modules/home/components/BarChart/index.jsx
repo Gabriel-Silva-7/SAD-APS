@@ -15,9 +15,12 @@ const BarCharts = (props) => {
   const [data, setData] = useState([{}]);
 
   const getSells = async () => {
-    const response = await axios.post("http://localhost:8080/getsells", {
-      days: props.selectedOption,
-    });
+    const response = await axios.post(
+      "https://gastronom.azurewebsites.net/getsells",
+      {
+        days: props.selectedOption,
+      }
+    );
     setData(response.data);
   };
   useEffect(() => {

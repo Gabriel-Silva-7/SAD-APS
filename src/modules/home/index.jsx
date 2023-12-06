@@ -12,9 +12,12 @@ const Dashboard = () => {
   const [newClients, setNewClients] = useState();
 
   const getNewClients = async () => {
-    const response = await axios.post("http://localhost:8080/getnewclients", {
-      days: -14,
-    });
+    const response = await axios.post(
+      "https://gastronom.azurewebsites.net/getnewclients",
+      {
+        days: -14,
+      }
+    );
     setNewClients(response.data);
   };
 
