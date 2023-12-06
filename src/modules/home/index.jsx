@@ -34,7 +34,7 @@ const Dashboard = () => {
       </div>
       <S.GridContainer>
         <S.CardGrid>
-          <Card
+          {/* <Card
             title="Novos Clientes"
             date="Semanal"
             total={newClients && newClients[0]?.NovosClientes}
@@ -42,7 +42,7 @@ const Dashboard = () => {
           />
           <Card title="Activity" date="yearly" />
           <Card title="Real-Time" />
-          <Card title="Bounce" date="annual" />
+          <Card title="Bounce" date="annual" /> */}
         </S.CardGrid>
         <S.ChartContainer>
           <BarCharts selectedOption={selectedOption} />
