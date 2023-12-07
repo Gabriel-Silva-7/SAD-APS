@@ -11,7 +11,7 @@ import {
   Line,
 } from "recharts";
 
-const BarCharts = (props) => {
+const LineCharts = (props) => {
   const [data, setData] = useState([{}]);
 
   const getSells = async () => {
@@ -43,4 +43,4 @@ const BarCharts = (props) => {
   );
 };
 
-export default BarCharts;
+export default LineCharts;

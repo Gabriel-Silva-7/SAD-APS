@@ -10,6 +10,8 @@ import Register from "../modules/Register";
 import * as S from "../layout/styles/";
 import SideBarMenu from "../layout/SideBar";
 import Header from "../layout/header";
+import Vendas from "../modules/vendas";
+import Financeiro from "../modules/finc";
 
 const PrivateRoutes = ({ authenticated }) => {
   const Container = ({ component: Component }) => {
@@ -38,17 +40,14 @@ const PrivateRoutes = ({ authenticated }) => {
         <Route path="/login" element={<Navigate to="/" />} />
         <Route path="/register" element={<Navigate to="/" />} />
         <Route path="/" element={<Container component={Dashboard} />} />
-        <Route
-          path="/vendas"
-          element={<Container component={() => <>vendas</>} />}
-        />
+        <Route path="/vendas" element={<Container component={Vendas} />} />
         <Route
           path="/desempenhopessoal"
           element={<Container component={() => <>desempenhopessoal</>} />}
         />
         <Route
           path="/financeiro"
-          element={<Container component={() => <>financeiro</>} />}
+          element={<Container component={Financeiro} />}
         />
         <Route
           path="/inventarioeestoque"

@@ -4,7 +4,7 @@ const MenuContext = createContext();
 
 export function MenuProvider({ children }) {
   const [collapsedMenu, setCollapsedMenu] = useState(
-    screen.width > 400 ? false : true
+    screen.width > 700 ? false : true
   );
 
   return (

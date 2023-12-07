@@ -12,7 +12,11 @@ const Card = (props) => {
         </S.Header>
         <S.TotalClients>{props?.total}</S.TotalClients>
         <S.PercentContainer>
-          <S.Percents>+{props?.percent}%</S.Percents>
+          {props.percent && (
+            <S.Percents>
+              +{props?.percent && props?.percent.toFixed(2)}%
+            </S.Percents>
+          )}
           <S.LastUpdate>desde a ultima semana</S.LastUpdate>
         </S.PercentContainer>
       </S.ContainerWrapper>

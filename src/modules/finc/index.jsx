@@ -4,7 +4,7 @@ import Header from "./components/Header/";
 import * as S from "./styles";
 import axios from "axios";
 
-const Vendas = () => {
+const Finc = () => {
   const [selectedOption, setSelectedOption] = useState(-15);
 
   return (
@@ -21,4 +21,4 @@ const Vendas = () => {
   );
 };
 
-export default Vendas;
+export default Finc;

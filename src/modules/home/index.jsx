@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Divider } from "@mui/material";
 import PizzaChart from "./components/PizzaChart";
-import BarCharts from "./components/BarChart";
+import LineChart from "./components/LineChart";
 import Header from "./components/Header";
 import * as S from "./styles";
 import Card from "./components/NewCards";
@@ -47,7 +47,7 @@ const Dashboard = () => {
           <Card title="Bounce" date="annual" />
         </S.CardGrid>
         <S.ChartContainer>
-          <BarCharts selectedOption={selectedOption} />
+          <LineChart selectedOption={selectedOption} />
         </S.ChartContainer>
         <S.ChartContainer>
           <PizzaChart />

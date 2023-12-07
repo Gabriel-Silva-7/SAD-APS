@@ -15,10 +15,6 @@ export const GridContainer = styled.div`
   gap: 50px;
   margin-top: 20px;
   padding: 20px;
-
-  @media (max-width: 700px) {
-    grid-template-columns: 1fr;
-  }
 `;
 
 export const CardGrid = styled.div`
@@ -26,17 +22,6 @@ export const CardGrid = styled.div`
   grid-template-columns: 48% 48%;
   grid-template-rows: 1fr 1fr;
   gap: 4%;
-  @media (max-width: 700px) {
-    width: 80%;
-    gap: 10px;
-  }
-
-  @media (max-width: 380px) {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    gap: 10px;
-  }
 `;
 
 export const ChartContainer = styled.div`
@@ -46,9 +31,4 @@ export const ChartContainer = styled.div`
   border-radius: 12px;
   width: 100%;
   min-height: 320px;
-  @media (max-width: 700px) {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-  }
 `;
