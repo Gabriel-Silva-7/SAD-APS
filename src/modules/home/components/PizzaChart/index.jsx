@@ -21,7 +21,7 @@ const PizzaChart = () => {
 
   const getTotalSellByFilial = async () => {
     axios
-      .post("http://localhost:8080/gettotalsellbyfilial")
+      .post("https://gastronom.azurewebsites.net/gettotalsellbyfilial")
       .then((response) => {
         setData(response?.data?.responsegetTotalSellByFilial);
       });
@@ -31,7 +31,7 @@ const PizzaChart = () => {
     const { payload } = props;
     if (!payload || payload.length === 0) return null;
 
-    const { Razao_Social, ValorFilial } = payload[0].payload;
+    const { Razao_Social, ValorFilial, Cidade_Filial } = payload[0].payload;
 
     return (
       <div
@@ -46,6 +46,9 @@ const PizzaChart = () => {
         </p>
         <p>
           <strong>Valor:</strong> {ValorFilial}
+        </p>
+        <p>
+          <strong>Filial:</strong> {Cidade_Filial}
         </p>
       </div>
     );

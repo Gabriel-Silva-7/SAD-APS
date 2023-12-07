@@ -6,10 +6,14 @@ import Header from "./components/Header";
 import * as S from "./styles";
 import Card from "./components/NewCards";
 import axios from "axios";
+import BarCharts from "./components/BarChart";
 
 const Dashboard = () => {
   const [selectedOption, setSelectedOption] = useState(-15);
   const [newClients, setNewClients] = useState();
+  const [sellQuantityBetweenWeeks, setSellQuantityBetweenWeeks] = useState();
+  const [mostSellFoodPlate, setMostSellFoodPlate] = useState();
+  const [filialMostSell, setFilialMostSell] = useState();
 
   const getNewClients = async () => {
     const response = await axios.post(
@@ -21,8 +25,32 @@ const Dashboard = () => {
     setNewClients(response.data);
   };
 
+  const getsellQuantityBetweenWeeks = async () => {
+    const response = await axios.post(
+      "https://gastronom.azurewebsites.net/getsellsquantitybetweenweeks"
+    );
+    setSellQuantityBetweenWeeks(response.data);
+  };
+
+  const getMostSellFoodPlate = async () => {
+    const response = await axios.post(
+      "https://gastronom.azurewebsites.net/getmostsellfoodplate"
+    );
+    setMostSellFoodPlate(response.data);
+  };
+
+  const getTotalSellByFilial = async () => {
+    const response = await axios.post(
+      "https://gastronom.azurewebsites.net/gettotalsellbyfilial"
+    );
+    setFilialMostSell(response.data.responsegetTotalSell);
+  };
+
   useEffect(() => {
     getNewClients();
+    getsellQuantityBetweenWeeks();
+    getMostSellFoodPlate();
+    getTotalSellByFilial();
   }, []);
 
   return (
@@ -42,9 +70,35 @@ const Dashboard = () => {
             total={newClients && newClients[0]?.NovosClientes}
             percent={newClients && newClients[0]?.PercentualAumento}
           />
-          <Card title="Activity" date="yearly" />
-          <Card title="Real-Time" />
-          <Card title="Bounce" date="annual" />
+          <Card
+            title="Vendas"
+            date="Semanal"
+            total={
+              sellQuantityBetweenWeeks &&
+              sellQuantityBetweenWeeks[0]?.TotalVendasUltimos7Dias
+            }
+            percent={
+              sellQuantityBetweenWeeks &&
+              sellQuantityBetweenWeeks[0]?.PercentualAumento
+            }
+          />
+          <Card
+            title="Prato mais vendido"
+            prato={mostSellFoodPlate && mostSellFoodPlate[0]?.Nome_Prato}
+            date="Semanal"
+            total={
+              mostSellFoodPlate && mostSellFoodPlate[0]?.UnidadesUltimos7Dias
+            }
+            percent={
+              mostSellFoodPlate && mostSellFoodPlate[0]?.PercentualVariacao
+            }
+          />
+          <Card
+            title="Filial Com Mais Vendas"
+            date="Semanal"
+            filial={filialMostSell && filialMostSell[0]?.Cidade_Filial}
+            total={filialMostSell && filialMostSell[0]?.ValorFilial}
+          />
         </S.CardGrid>
         <S.ChartContainer>
           <LineChart selectedOption={selectedOption} />
@@ -54,7 +108,7 @@ const Dashboard = () => {
           <PizzaChart />
         </S.ChartContainer>
         <S.ChartContainer>
-          <PizzaChart />
+          <BarCharts selectedOption={selectedOption} />
         </S.ChartContainer>
       </S.GridContainer>
     </div>

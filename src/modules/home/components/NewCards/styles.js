@@ -30,7 +30,7 @@ export const TotalClients = styled.div`
     "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol";
   display: flex;
-  align-items: center;
+  flex-direction: column;
 `;
 
 export const Date = styled.div`

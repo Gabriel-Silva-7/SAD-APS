@@ -2,6 +2,7 @@ import React from "react";
 import * as S from "./styles";
 
 const Card = (props) => {
+  console.log(props);
   return (
     <S.ContainerCard>
       <S.ContainerWrapper>
@@ -9,7 +10,15 @@ const Card = (props) => {
           <div>{props.title && props.title}</div>
           <S.Date>{props.date && props.date}</S.Date>
         </S.Header>
-        <S.TotalClients>{props?.total}</S.TotalClients>
+        <S.TotalClients>
+          <div>{props?.total}</div>
+          {props.prato && (
+            <div style={{ fontSize: 14 }}>Prato: {props.prato}</div>
+          )}
+          {props.filial && (
+            <div style={{ fontSize: 14 }}>Filial: {props.filial}</div>
+          )}
+        </S.TotalClients>
         <S.PercentContainer>
           {props.percent && (
             <S.Percents>

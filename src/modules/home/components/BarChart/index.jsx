@@ -9,14 +9,16 @@ import {
   ResponsiveContainer,
   LineChart,
   Line,
+  BarChart,
+  Bar,
 } from "recharts";
 
-const LineCharts = (props) => {
+const BarCharts = (props) => {
   const [data, setData] = useState([{}]);
 
-  const getSells = async () => {
+  const getMostSellFoods = async () => {
     const response = await axios.post(
-      "https://gastronom.azurewebsites.net/getsellsperday",
+      "https://gastronom.azurewebsites.net/getMostSellFoods",
       {
         days: props.selectedOption,
       }
@@ -25,23 +27,23 @@ const LineCharts = (props) => {
   };
 
   useEffect(() => {
-    getSells();
+    getMostSellFoods();
   }, [props.selectedOption]);
 
   return (
     <ResponsiveContainer width="100%" height={"100%"}>
-      <LineChart
+      <BarChart
         margin={{ top: 50, left: 25, right: 50, bottom: 35 }}
         data={data}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="Data_Venda" />
+        <XAxis dataKey="Nome_Prato" />
         <YAxis />
         <Tooltip />
-        <Line dataKey="Quantidade_Vendas" fill="#8884d8" />
-      </LineChart>
+        <Bar dataKey="TotalVendas" fill="#8884d8" />
+      </BarChart>
     </ResponsiveContainer>
   );
 };
 
-export default LineCharts;
+export default BarCharts;
