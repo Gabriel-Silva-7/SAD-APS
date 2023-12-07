@@ -50,6 +50,7 @@ const Dashboard = () => {
           <LineChart selectedOption={selectedOption} />
         </S.ChartContainer>
         <S.ChartContainer>
+          <div>Vendas por Filial</div>
           <PizzaChart />
         </S.ChartContainer>
         <S.ChartContainer>

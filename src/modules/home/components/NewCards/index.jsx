@@ -2,7 +2,6 @@ import React from "react";
 import * as S from "./styles";
 
 const Card = (props) => {
-  console.log(props);
   return (
     <S.ContainerCard>
       <S.ContainerWrapper>
