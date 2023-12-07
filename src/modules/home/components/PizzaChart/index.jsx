@@ -28,8 +28,6 @@ const PizzaChart = () => {
       <StyledPieChart>
         <Pie
           data={data}
-          cx={200}
-          cy={150}
           innerRadius={80}
           outerRadius={100}
           fill="#8884d8"
