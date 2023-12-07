@@ -46,11 +46,25 @@ const Dashboard = () => {
     setFilialMostSell(response.data.responsegetTotalSell);
   };
 
+  const getPredictDays = async () => {
+    const response = await axios.post(
+      "http://localhost:5000/predictDay",
+      { days: selectedOption ^ -1 },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    console.log(response.data);
+  };
+
   useEffect(() => {
     getNewClients();
     getsellQuantityBetweenWeeks();
     getMostSellFoodPlate();
     getTotalSellByFilial();
+    getPredictDays();
   }, []);
 
   return (

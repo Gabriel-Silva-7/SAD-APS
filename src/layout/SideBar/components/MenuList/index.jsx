@@ -22,21 +22,21 @@ const MenuList = () => {
       <Item key="Vendas" icon={<ChartBarHorizontal size={20} />}>
         <a onClick={() => nav("/vendas")}>Vendas</a>
       </Item>
-      <Divider />
+      {/* <Divider />
       <Item key="Financeiro" icon={<Money size={20} />}>
         <a onClick={() => nav("/financeiro")}>Financeiro</a>
-      </Item>
+      </Item> */}
       <Divider />
       <Item key="Inventario&Estoque" icon={<Archive size={20} />}>
         <a onClick={() => nav("/inventarioeestoque")}>Inventario e Estoque</a>
       </Item>
       <Divider />
-      <Item key="GerneciadorDeUsuario" icon={<Archive size={20} />}>
+      {/* <Item key="GerneciadorDeUsuario" icon={<Archive size={20} />}>
         <a onClick={() => nav("/gerenciadordeusuario")}>
           Gerenciador de Usuário
         </a>
       </Item>
-      <Divider />
+      <Divider /> */}
     </S.StyledMenu>
   );
 };
